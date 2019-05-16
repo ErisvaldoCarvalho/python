@@ -12,5 +12,11 @@
         {{form}}
         <button type="submit">Enviar</button>
     </form>
+
+    {% if name %}
+        <h2>Olá {{name}}</h2>
+        <h2>Aniversário: {{birth_year}}</h2>
+        <h2>Cor favorita: {{favorite_colors}}</h2>
+    {% endif %}
 </body>
 </html>
