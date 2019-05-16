@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from core.forms import NameForm
+from core.forms import NameForm, ClientForm
 
 def form_manual(request):
     data = {}
@@ -24,3 +24,14 @@ def django_form(request):
             favorite_colors = form.cleaned_data['favorite_colors']
 
     return render(request, 'core/django-form.html', {'form':form, 'name':name, 'birth_year':birth_year,'favorite_colors':favorite_colors})
+
+def model_form(request):
+    form = ClientForm(request.POST or None)
+    message = ''
+    
+    if request.method == 'POST':
+        form.save()
+        message = 'Registro salvo com sucesso!'
+        form = ClientForm()
+
+    return render(request, 'core/django-model-forms.html', {'form':form, 'message':message})

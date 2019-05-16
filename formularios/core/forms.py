@@ -1,4 +1,6 @@
 from django import forms
+from django.forms import ModelForm
+from core.models import Client
 
 BIRTH_YEAR_CHOICES = ('1980', '1981', '1982', '1983', '1984')
 FAVORITE_COLORS_CHOICES = (
@@ -15,3 +17,8 @@ class NameForm(forms.Form):
         widget=forms.CheckboxSelectMultiple,
         choices=FAVORITE_COLORS_CHOICES,
     )
+
+class ClientForm(ModelForm):
+    class Meta:
+        model = Client
+        fields = ['name', 'birth_year', 'birth_year1', 'favorite_colors']
