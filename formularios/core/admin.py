@@ -1,6 +1,7 @@
 from django.contrib import admin
-from core.models import Client, Cliente, Fornecedor
+from core.models import Client, Cliente, Fornecedor, Produto
 
 admin.site.register(Client)
 admin.site.register(Cliente)
 admin.site.register(Fornecedor)
+admin.site.register(Produto)

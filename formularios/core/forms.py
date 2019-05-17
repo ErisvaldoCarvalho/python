@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from core.models import Client, Cliente, Fornecedor
+from core.models import Client, Cliente, Fornecedor, Produto
 
 BIRTH_YEAR_CHOICES = ('1980', '1981', '1982', '1983', '1984')
 FAVORITE_COLORS_CHOICES = (
@@ -32,3 +32,8 @@ class FornecedorForm(ModelForm):
     class Meta:
         model = Fornecedor
         fields = ['nome', 'cnpj','fone', 'email', 'endereco']
+
+class ProdutoForm(ModelForm):
+    class Meta:
+        model=Produto
+        fields = ['nome']
