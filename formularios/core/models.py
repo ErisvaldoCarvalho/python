@@ -38,3 +38,13 @@ class Cliente(models.Model):
 
     def __str__(self):
         return self.nome
+
+class Fornecedor(models.Model):
+    nome = models.CharField(max_length=250)
+    cnpj = models.CharField(max_length=15)
+    fone = models.CharField(max_length=15)
+    email = models.CharField(max_length=200)
+    endereco = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.nome
