@@ -1,5 +1,10 @@
 from django.db import models
 
+SEXO_CHOICES = (
+    ('masculino', 'Masculino'),
+    ('feminino', 'Feminino'),
+)
+
 BIRTH_YEAR_CHOICES = (
     ('1980', '1980'),
     ('1981', '1981'),
@@ -22,3 +27,14 @@ class Client(models.Model):
 
     def __str__(self):
         return self.name
+
+class Cliente(models.Model):
+    nome = models.CharField(max_length=250)
+    cpf = models.CharField(max_length=15)
+    sexo = models.CharField(max_length=10, choices = SEXO_CHOICES)
+    fone = models.CharField(max_length=15)
+    email = models.CharField(max_length=200)
+    endereco = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.nome

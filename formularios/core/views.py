@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from core.forms import NameForm, ClientForm
-
+from core.forms import NameForm, ClientForm, ClienteForm
+MESSAGE_REGISTRO_GRAVADO_COM_SUCESSO = 'Registro gravado com sucesso!'
 def form_manual(request):
     data = {}
     if request.method == 'POST':
@@ -35,3 +35,14 @@ def model_form(request):
         form = ClientForm()
 
     return render(request, 'core/django-model-forms.html', {'form':form, 'message':message})
+
+def cliente_form(request):
+    form = ClienteForm(request.POST or None)
+    message = ''
+    titulo = 'Cadastro de Clientes'
+    if request.method == 'POST':
+        form.save()
+        message = MESSAGE_REGISTRO_GRAVADO_COM_SUCESSO
+        form = ClienteForm()
+    
+    return render(request, 'core/django-model-forms.html', {'form':form, 'message':message, 'titulo':titulo})

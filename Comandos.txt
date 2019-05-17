@@ -1,1 +1,5 @@
-teste
+Criar o modelo
+Criar o formulário
+Criar a view
+Criar a url
+Registrar a view no admin.py

@@ -7,7 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Django Model Forms</h1>
+    <h1>
+        {% if titulo %}
+            {{titulo}}
+        {% else %}
+            Django Model Forms
+        {% endif %}
+    </h1>
+    
     {% if message %}
         {{message}}
     {% endif %}
