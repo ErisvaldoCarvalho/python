@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from core.forms import NameForm, ClientForm, ClienteForm, FornecedorForm, ProdutoForm
+from core.forms import NameForm, ClientForm, ClienteForm, FornecedorForm, ProdutoForm, AgendaForm
 
 MESSAGE_REGISTRO_GRAVADO_COM_SUCESSO = 'Registro gravado com sucesso!'
 def form_manual(request):
@@ -69,5 +69,17 @@ def produto_form(request):
         form.save()
         message = MESSAGE_REGISTRO_GRAVADO_COM_SUCESSO
         form = ProdutoForm()
+    
+    return render(request, 'core/django-model-forms.html', {'form':form, 'message':message, 'titulo':titulo})
+
+def agenda_form(request):
+    form = AgendaForm(request.POST or None)
+    message = ''
+    titulo = 'Agenda Profissional'
+
+    if request.method == 'POST':
+        form.save()
+        message = MESSAGE_REGISTRO_GRAVADO_COM_SUCESSO
+        form = AgendaForm()
     
     return render(request, 'core/django-model-forms.html', {'form':form, 'message':message, 'titulo':titulo})
